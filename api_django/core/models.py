@@ -9,3 +9,18 @@ class TipoTrabajador(models.Model):
 
 def __str__(self):
         return f"{self.rol_cargo} ({self.tipo_contrato})"
+
+
+
+class Trabajador(models.Model):
+      rut = models.CharField(max_length=12, unique=True)
+      nombre = models.CharField(max_length=60)
+      apellido = models.CharField(max_length=60)
+      fecha_nacimiento = models.DateField()
+      email = models.EmailField(unique=True)
+      telefono = models.CharField(max_length=20, blank=True)
+      rol_cargo = models.CharField(max_length=60, help_text="Rol o cargo del trabajador")
+      tipo_contrato = models.CharField(
+        max_length=20,
+        help_text="Tipo de contrato (Plazo fijo, Indefinido, Honorarios, etc.)"
+    )
