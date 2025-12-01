@@ -24,3 +24,17 @@ class Trabajador(models.Model):
         max_length=20,
         help_text="Tipo de contrato (Plazo fijo, Indefinido, Honorarios, etc.)"
     )
+
+      area = models.CharField(max_length=60, blank=True)
+      turno = models.CharField(max_length=20)  # DIURNO / NOCTURNO / ROTATIVO
+      fecha_ingreso = models.DateField()
+      sueldo_base = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+      estado = models.CharField(
+        max_length=10,
+        help_text="ACTIVO / INACTIVO"
+    )
+      contacto_emergencia = models.CharField(max_length=100, blank=True)
+      telefono_emergencia = models.CharField(max_length=20, blank=True)
+
+      def __str__(self):
+        return f"{self.nombre} {self.apellido} ({self.rut})"    
