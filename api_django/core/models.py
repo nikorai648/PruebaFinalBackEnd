@@ -38,3 +38,17 @@ class Trabajador(models.Model):
 
       def __str__(self):
         return f"{self.nombre} {self.apellido} ({self.rut})"    
+
+
+class Accidente(models.Model):
+     fecha = models.DateField()
+     tipo = models.CharField(max_length=60)
+     gravedad = models.CharField(max_length=10)  # LEVE / MODERADA / GRAVE / FATAL
+     lugar = models.CharField(max_length=120)
+     hora_suceso = models.TimeField(null=True, blank=True)
+     descripcion = models.TextField(blank=True)
+     requiere_licencia = models.BooleanField(default=False)
+     dias_licencia = models.PositiveIntegerField(
+        default=0,
+        validators=[MaxValueValidator(365)]
+    )
