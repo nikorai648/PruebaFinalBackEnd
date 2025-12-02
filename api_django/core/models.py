@@ -67,3 +67,6 @@ class Accidente(models.Model):
         blank=True,
         help_text="Lista de RUTs o nombres de trabajadores involucrados, separados por coma."
     )
+     
+     def __str__(self):
+        return f"{self.fecha} - {self.tipo} ({self.gravedad})"
