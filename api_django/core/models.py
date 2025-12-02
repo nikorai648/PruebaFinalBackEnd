@@ -92,3 +92,10 @@ class Asistencia(models.Model):
         help_text="PRESENTE / AUSENTE / LICENCIA / VACACIONES"
     )
     observaciones = models.CharField(max_length=255, blank=True)   
+
+    class Meta:
+        ordering = ['-fecha']
+
+    def __str__(self):
+        return f"{self.trabajador_nombre} ({self.trabajador_rut}) - {self.fecha} ({self.estado})"
+
