@@ -99,3 +99,11 @@ class Asistencia(models.Model):
     def __str__(self):
         return f"{self.trabajador_nombre} ({self.trabajador_rut}) - {self.fecha} ({self.estado})"
 
+class EficienciaTrabajador(models.Model):
+   
+    trabajador_rut = models.CharField(max_length=12)
+    trabajador_nombre = models.CharField(max_length=120)
+
+    id_eficiencia = models.IntegerField()
+    trabajos_completados_en_1_mes = models.IntegerField(default=0)
+    sueldo_promedio_informado = models.IntegerField(default=0)
