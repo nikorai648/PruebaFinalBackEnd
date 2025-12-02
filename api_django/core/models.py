@@ -70,3 +70,20 @@ class Accidente(models.Model):
      
      def __str__(self):
         return f"{self.fecha} - {self.tipo} ({self.gravedad})"
+     
+
+class Asistencia(models.Model):
+    
+    trabajador_rut = models.CharField(max_length=12)
+    trabajador_nombre = models.CharField(max_length=120)
+
+    fecha = models.DateField()
+    hora_entrada = models.TimeField(null=True, blank=True)
+    hora_salida = models.TimeField(null=True, blank=True)
+    minutos_atraso = models.PositiveIntegerField(default=0)
+    horas_extras = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        default=0,
+        validators=[MinValueValidator(0)]
+    )     
