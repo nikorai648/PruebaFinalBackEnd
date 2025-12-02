@@ -127,3 +127,7 @@ class SueldoTrabajador(models.Model):
    
     trabajador_rut = models.CharField(max_length=12)
     trabajador_nombre = models.CharField(max_length=120)   
+    mes = models.CharField(max_length=20, help_text="Mes de cálculo, por ejemplo: 2025-11")
+    cantidad_trabajos_mes = models.PositiveIntegerField(default=0)
+    tipo_trabajos_mes = models.CharField(max_length=255)
+    sueldo_total_mes = models.DecimalField(max_digits=12, decimal_places=2, default=0)
