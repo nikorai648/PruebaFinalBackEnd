@@ -136,3 +136,6 @@ class SueldoTrabajador(models.Model):
         blank=True,
         help_text="ID de eficiencia asociada (si aplica)."
     )
+
+    def __str__(self):
+        return f"{self.trabajador_nombre} ({self.trabajador_rut}) - {self.mes} (${self.sueldo_total_mes})"
