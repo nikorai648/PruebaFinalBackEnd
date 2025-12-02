@@ -131,3 +131,8 @@ class SueldoTrabajador(models.Model):
     cantidad_trabajos_mes = models.PositiveIntegerField(default=0)
     tipo_trabajos_mes = models.CharField(max_length=255)
     sueldo_total_mes = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    id_eficiencia_asociada = models.IntegerField(
+        null=True,
+        blank=True,
+        help_text="ID de eficiencia asociada (si aplica)."
+    )
