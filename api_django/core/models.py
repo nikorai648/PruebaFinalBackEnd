@@ -52,3 +52,18 @@ class Accidente(models.Model):
         default=0,
         validators=[MaxValueValidator(365)]
     )
+    
+     costo_estimado = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
+     reportado_a = models.CharField(max_length=120, blank=True)
+     observaciones = models.CharField(max_length=255, blank=True)
+
+   
+     trabajadores_involucrados = models.TextField(
+        blank=True,
+        help_text="Lista de RUTs o nombres de trabajadores involucrados, separados por coma."
+    )
