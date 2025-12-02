@@ -110,3 +110,12 @@ class EficienciaTrabajador(models.Model):
 
     def __str__(self):
         return f"{self.trabajador_nombre} ({self.trabajador_rut}) - efic {self.id_eficiencia}"
+
+class DesempenoTrabajador(models.Model):
+   
+    trabajador_rut = models.CharField(max_length=12)
+    trabajador_nombre = models.CharField(max_length=120)
+
+    id_desempeno = models.IntegerField()
+    forma_de_hacer_trabajos = models.CharField(max_length=255, blank=True)
+    posibles_quejas = models.CharField(max_length=255, blank=True)    
