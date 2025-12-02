@@ -119,3 +119,6 @@ class DesempenoTrabajador(models.Model):
     id_desempeno = models.IntegerField()
     forma_de_hacer_trabajos = models.CharField(max_length=255, blank=True)
     posibles_quejas = models.CharField(max_length=255, blank=True)    
+
+    def __str__(self):
+        return f"{self.trabajador_nombre} ({self.trabajador_rut}) - desp {self.id_desempeno}"
