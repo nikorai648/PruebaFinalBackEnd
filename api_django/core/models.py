@@ -86,4 +86,9 @@ class Asistencia(models.Model):
         decimal_places=2,
         default=0,
         validators=[MinValueValidator(0)]
-    )     
+    )  
+    estado = models.CharField(
+        max_length=12,
+        help_text="PRESENTE / AUSENTE / LICENCIA / VACACIONES"
+    )
+    observaciones = models.CharField(max_length=255, blank=True)   
