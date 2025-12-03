@@ -28,4 +28,6 @@ urlpatterns = [
     path('api/accidentes/<int:pk>/', views.accidente_detail, name='accidente_detail'),
     path('api/eficiencias/', views.eficiencia_list, name='eficiencia_list'),
     path('api/eficiencias/<int:pk>/', views.eficiencia_detail, name='eficiencia_detail'),
+     path('api/desempenos/', views.desempeno_list, name='desempeno_list'),
+    path('api/desempenos/<int:pk>/', views.desempeno_detail, name='desempeno_detail'),
 ]
