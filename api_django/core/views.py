@@ -2,8 +2,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Trabajador, Asistencia
-from .serializers import TrabajadorSerializer,  AsistenciaSerializer
+from .models import Trabajador, Asistencia, Accidente
+from .serializers import TrabajadorSerializer,  AsistenciaSerializer, AccidenteSerializer
 
 
 @api_view(['GET', 'POST'])
@@ -98,3 +98,14 @@ def asistencia_detail(request, pk):
     if request.method == 'DELETE':
         asistencia.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST'])
+def accidente_list(request):
+    """
+    GET  /api/accidentes/      → lista todos
+    POST /api/accidentes/      → crea uno nuevo
+    """
+    if request.method == 'GET':
+        accidentes = Accidente.objects.all()
+        serializer = AccidenteSerializer(accidentes, many=True)
+        return Response(serializer.data)
