@@ -16,3 +16,8 @@ class AsistenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Asistencia
         fields = "__all__"        
+
+class AccidenteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Accidente
+        fields = "__all__"
