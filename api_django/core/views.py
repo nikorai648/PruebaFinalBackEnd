@@ -25,4 +25,20 @@ def trabajador_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET', 'PUT', 'DELETE'])
+def trabajador_detail(request, pk):
+    """
+    GET    /api/trabajadores/<pk>/   → detalle
+    PUT    /api/trabajadores/<pk>/   → actualizar
+    DELETE /api/trabajadores/<pk>/   → borrar
+    """
+    try:
+        trabajador = Trabajador.objects.get(pk=pk)
+    except Trabajador.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = TrabajadorSerializer(trabajador)
+        return Response(serializer.data)
+
 
