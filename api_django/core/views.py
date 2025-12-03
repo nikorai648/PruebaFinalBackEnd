@@ -200,3 +200,18 @@ def desempeno_detail(request, pk):
         desempeno = DesempenoTrabajador.objects.get(pk=pk)
     except DesempenoTrabajador.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = DesempenoTrabajadorSerializer(desempeno)
+        return Response(serializer.data)
+
+    if request.method == 'PUT':
+        serializer = DesempenoTrabajadorSerializer(desempeno, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'DELETE':
+        desempeno.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
