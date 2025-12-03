@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/trabajadores/', views.trabajador_list, name='trabajador_list'),
     path('api/trabajadores/<int:pk>/', views.trabajador_detail, name='trabajador_detail'),
+    path('api/asistencias/', views.asistencia_list, name='asistencia_list'),
+    path('api/asistencias/<int:pk>/', views.asistencia_detail, name='asistencia_detail'),
 ]
