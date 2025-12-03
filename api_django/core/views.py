@@ -116,3 +116,19 @@ def accidente_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def accidente_detail(request, pk):
+    """
+    GET    /api/accidentes/<pk>/   → detalle
+    PUT    /api/accidentes/<pk>/   → actualizar
+    DELETE /api/accidentes/<pk>/   → borrar
+    """
+    try:
+        accidente = Accidente.objects.get(pk=pk)
+    except Accidente.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = AccidenteSerializer(accidente)
+        return Response(serializer.data)    
