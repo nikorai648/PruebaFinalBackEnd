@@ -1,5 +1,8 @@
-from rest_framework import viewsets
-from .models import *
-from .serializers import *
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+
+from .models import Trabajador
+from .serializers import TrabajadorSerializer
 
 
