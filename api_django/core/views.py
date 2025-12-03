@@ -83,3 +83,7 @@ def asistencia_detail(request, pk):
         asistencia = Asistencia.objects.get(pk=pk)
     except Asistencia.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = AsistenciaSerializer(asistencia)
+        return Response(serializer.data)
