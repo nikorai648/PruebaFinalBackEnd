@@ -31,3 +31,8 @@ class DesempenoTrabajadorSerializer(serializers.ModelSerializer):
     class Meta:
         model = DesempenoTrabajador
         fields = "__all__"
+
+class SueldoTrabajadorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SueldoTrabajador
+        fields = "__all__"
