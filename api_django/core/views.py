@@ -179,4 +179,10 @@ def eficiencia_detail(request, pk):
     if request.method == 'DELETE':
         eficiencia.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
+
+@api_view(['GET', 'POST'])
+def desempeno_list(request):
+    if request.method == 'GET':
+        desempenos = DesempenoTrabajador.objects.all()
+        serializer = DesempenoTrabajadorSerializer(desempenos, many=True)
+        return Response(serializer.data)    
