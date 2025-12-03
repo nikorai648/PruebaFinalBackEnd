@@ -47,3 +47,7 @@ def trabajador_detail(request, pk):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    if request.method == 'DELETE':
+        trabajador.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
