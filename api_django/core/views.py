@@ -87,3 +87,10 @@ def asistencia_detail(request, pk):
     if request.method == 'GET':
         serializer = AsistenciaSerializer(asistencia)
         return Response(serializer.data)
+    
+    if request.method == 'PUT':
+        serializer = AsistenciaSerializer(asistencia, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
