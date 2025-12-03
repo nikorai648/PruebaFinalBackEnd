@@ -70,3 +70,16 @@ def asistencia_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def asistencia_detail(request, pk):
+    """
+    GET    /api/asistencias/<pk>/   → detalle
+    PUT    /api/asistencias/<pk>/   → actualizar
+    DELETE /api/asistencias/<pk>/   → borrar
+    """
+    try:
+        asistencia = Asistencia.objects.get(pk=pk)
+    except Asistencia.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
