@@ -143,3 +143,10 @@ def accidente_detail(request, pk):
     if request.method == 'DELETE':
         accidente.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+@api_view(['GET', 'POST'])
+def eficiencia_list(request):
+    if request.method == 'GET':
+        eficiencias = EficienciaTrabajador.objects.all()
+        serializer = EficienciaTrabajadorSerializer(eficiencias, many=True)
+        return Response(serializer.data)    
