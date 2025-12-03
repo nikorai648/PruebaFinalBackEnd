@@ -21,3 +21,13 @@ class AccidenteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Accidente
         fields = "__all__"
+
+class EficienciaTrabajadorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EficienciaTrabajador
+        fields = "__all__"
+
+class DesempenoTrabajadorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DesempenoTrabajador
+        fields = "__all__"
