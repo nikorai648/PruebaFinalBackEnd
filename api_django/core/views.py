@@ -157,3 +157,14 @@ def eficiencia_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def eficiencia_detail(request, pk):
+    try:
+        eficiencia = EficienciaTrabajador.objects.get(pk=pk)
+    except EficienciaTrabajador.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = EficienciaTrabajadorSerializer(eficiencia)
+        return Response(serializer.data)    
