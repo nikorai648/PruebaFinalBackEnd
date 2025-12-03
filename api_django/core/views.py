@@ -2,8 +2,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import Trabajador, Asistencia, Accidente
-from .serializers import TrabajadorSerializer,  AsistenciaSerializer, AccidenteSerializer
+from .models import Trabajador, Asistencia, Accidente, EficienciaTrabajador, DesempenoTrabajador, SueldoTrabajador
+from .serializers import TrabajadorSerializer,  AsistenciaSerializer, AccidenteSerializer, EficienciaTrabajadorSerializer, DesempenoTrabajadorSerializer,SueldoTrabajadorSerializer
 
 
 @api_view(['GET', 'POST'])
