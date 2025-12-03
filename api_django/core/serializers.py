@@ -11,3 +11,8 @@ class TipoTrabajadorSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipoTrabajador
         fields = "__all__"
+
+class AsistenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Asistencia
+        fields = "__all__"        
