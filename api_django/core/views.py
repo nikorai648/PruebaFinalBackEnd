@@ -215,3 +215,17 @@ def desempeno_detail(request, pk):
     if request.method == 'DELETE':
         desempeno.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'POST'])
+def sueldo_list(request):
+    if request.method == 'GET':
+        sueldos = SueldoTrabajador.objects.all()
+        serializer = SueldoTrabajadorSerializer(sueldos, many=True)
+        return Response(serializer.data)
+    
+    if request.method == 'POST':
+        serializer = SueldoTrabajadorSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
