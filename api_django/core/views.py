@@ -168,3 +168,15 @@ def eficiencia_detail(request, pk):
     if request.method == 'GET':
         serializer = EficienciaTrabajadorSerializer(eficiencia)
         return Response(serializer.data)    
+    
+    if request.method == 'PUT':
+        serializer = EficienciaTrabajadorSerializer(eficiencia, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'DELETE':
+        eficiencia.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
