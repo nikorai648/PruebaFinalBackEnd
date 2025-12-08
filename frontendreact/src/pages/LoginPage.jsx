@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginApi } from "../api/auth";   // ✅ conexión real API Django
+import { loginApi } from "../api/auth";   
 import { AuthContext } from "../App";
 
 export default function LoginPage() {
