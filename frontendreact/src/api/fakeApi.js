@@ -15,11 +15,10 @@ export async function login(username, password) {
     throw new Error("Credenciales inválidas");
   }
 
-  const data = await res.json();
+  const data = await res.json(); // { token: "..." }
 
-  // el endpoint de DRF TokenAuth devuelve: { "token": "...." }
   return {
     token: data.token,
-    username, // o data.username si hicieras que el backend lo devuelva
+    username,
   };
 }
