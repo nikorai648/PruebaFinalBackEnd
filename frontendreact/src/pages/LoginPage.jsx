@@ -31,7 +31,7 @@ export default function LoginPage() {
   return (
     <div className="container mt-5">
       <div className="col-md-4">
-        <h3>Ingreso</h3>
+        <h3>Ingreso (API Django)</h3>
 
         {error && <div className="alert alert-danger">{error}</div>}
 
@@ -43,6 +43,7 @@ export default function LoginPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               autoComplete="username"
+              required
             />
           </div>
 
