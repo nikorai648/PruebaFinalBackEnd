@@ -25,6 +25,9 @@ export default function Navbar() {
         <Link className="nav-link" to="/asistencias">
           Asistencias
         </Link>
+         <Link className="nav-link" to="/accidentes">
+          Accidentes
+         </Link>
       </div>
 
       <span className="navbar-text text-white me-3">
