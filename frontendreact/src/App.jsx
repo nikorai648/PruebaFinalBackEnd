@@ -10,18 +10,24 @@ import TrabajadorFormPage from "./pages/TrabajadorFormPage";
 export const AuthContext = React.createContext(null);
 
 export default function App() {
+  // 👇 Estado inicial leyendo desde localStorage
   const [auth, setAuth] = useState({
-    isAuthenticated: false,
-    token: null,
-    username: null,
+    isAuthenticated: !!localStorage.getItem("token"),
+    token: localStorage.getItem("token"),
+    username: localStorage.getItem("username"),
   });
 
   const login = (token, username) => {
+    // Guardar en memoria
     setAuth({
       isAuthenticated: true,
       token,
       username,
     });
+
+    // 👇 Guardar en localStorage (lo que usa getAuthHeaders)
+    localStorage.setItem("token", token);
+    localStorage.setItem("username", username);
   };
 
   const logout = () => {
@@ -30,6 +36,10 @@ export default function App() {
       token: null,
       username: null,
     });
+
+    // 👇 Limpiar localStorage
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
   };
 
   return (
