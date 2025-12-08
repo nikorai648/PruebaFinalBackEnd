@@ -4,8 +4,7 @@ import {
   createTrabajador,
   getTrabajador,
   updateTrabajador,
-} from "../api/fakeApi";
-
+} from "../api/trabajadores";
 const initialForm = {
   rut: "",
   nombre: "",

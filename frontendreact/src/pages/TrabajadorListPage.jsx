@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getTrabajadores, deleteTrabajador } from "../api/fakeApi";
+import { getTrabajadores, deleteTrabajador } from "../api/trabajadores";
 
 export default function TrabajadorListPage() {
   const [trabajadores, setTrabajadores] = useState([]);
