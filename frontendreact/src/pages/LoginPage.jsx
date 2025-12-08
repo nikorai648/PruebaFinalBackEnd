@@ -58,8 +58,8 @@ export default function LoginPage() {
               required
             />
           </div>
-          
-          <button className="btn btn-primary w-100">Entrar</button>
+
+           <button className="btn btn-primary w-100">Entrar</button>
         </form>
       </div>
     </div>
