@@ -16,6 +16,21 @@ export async function getTrabajadores() {
   return res.json();
 }
 
+// 🔹 Obtener UN trabajador por id (👉 ESTA ES LA NUEVA)
+export async function getTrabajador(id) {
+  const res = await fetch(`${API_URL}/api/trabajadores/${id}/`, {
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al cargar el trabajador");
+  }
+  return res.json();
+}
+
 // 🔹 Crear trabajador
 export async function createTrabajador(data) {
   const res = await fetch(`${API_URL}/api/trabajadores/`, {
