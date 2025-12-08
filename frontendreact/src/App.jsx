@@ -9,6 +9,8 @@ import TrabajadorListPage from "./pages/TrabajadorListPage";
 import TrabajadorFormPage from "./pages/TrabajadorFormPage";
 import AsistenciaListPage from "./pages/AsistenciaListPage";
 import AsistenciaFormPage from "./pages/AsistenciaFormPage";
+import AccidenteListPage from "./pages/AccidenteListPage";
+import AccidenteFormPage from "./pages/AccidenteFormPage";
 
 export const AuthContext = React.createContext(null);
 
@@ -133,3 +135,27 @@ export default function App() {
     </AuthContext.Provider>
   );
 }
+
+{/* LISTA ACCIDENTES */}
+<Route
+  path="/accidentes"
+  element={
+    auth.isAuthenticated ? <AccidenteListPage /> : <Navigate to="/login" />
+  }
+/>
+
+{/* CREAR ACCIDENTE */}
+<Route
+  path="/accidentes/nuevo"
+  element={
+    auth.isAuthenticated ? <AccidenteFormPage /> : <Navigate to="/login" />
+  }
+/>
+
+{/* EDITAR ACCIDENTE */}
+<Route
+  path="/accidentes/:id"
+  element={
+    auth.isAuthenticated ? <AccidenteFormPage /> : <Navigate to="/login" />
+  }
+/>
