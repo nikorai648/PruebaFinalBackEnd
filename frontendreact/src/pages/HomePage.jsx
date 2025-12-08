@@ -18,6 +18,9 @@ export default function HomePage() {
          <li>
           <Link to="/accidentes">Accidentes</Link>
         </li>
+        <li>
+          <Link to="/eficiencias">Eficiencia de Trabajadores</Link>
+        </li>
       </ul>
     </div>
   );
