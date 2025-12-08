@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
@@ -12,7 +13,7 @@ import AsistenciaFormPage from "./pages/AsistenciaFormPage";
 export const AuthContext = React.createContext(null);
 
 export default function App() {
-  // 👇 Estado inicial leyendo desde localStorage
+  // Estado inicial leyendo desde localStorage
   const [auth, setAuth] = useState({
     isAuthenticated: !!localStorage.getItem("token"),
     token: localStorage.getItem("token"),
@@ -20,14 +21,12 @@ export default function App() {
   });
 
   const login = (token, username) => {
-    // Guardar en memoria
     setAuth({
       isAuthenticated: true,
       token,
       username,
     });
 
-    // 👇 Guardar en localStorage (lo que usa getAuthHeaders)
     localStorage.setItem("token", token);
     localStorage.setItem("username", username);
   };
@@ -39,7 +38,6 @@ export default function App() {
       username: null,
     });
 
-    // 👇 Limpiar localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("username");
   };
@@ -72,7 +70,7 @@ export default function App() {
           }
         />
 
-        {/* CREAR */}
+        {/* CREAR TRABAJADOR */}
         <Route
           path="/trabajadores/nuevo"
           element={
@@ -84,7 +82,7 @@ export default function App() {
           }
         />
 
-        {/* EDITAR */}
+        {/* EDITAR TRABAJADOR */}
         <Route
           path="/trabajadores/:id"
           element={
@@ -95,31 +93,43 @@ export default function App() {
             )
           }
         />
+
+        {/* LISTA ASISTENCIAS */}
+        <Route
+          path="/asistencias"
+          element={
+            auth.isAuthenticated ? (
+              <AsistenciaListPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
+        {/* CREAR ASISTENCIA */}
+        <Route
+          path="/asistencias/nueva"
+          element={
+            auth.isAuthenticated ? (
+              <AsistenciaFormPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
+        {/* EDITAR ASISTENCIA */}
+        <Route
+          path="/asistencias/:id"
+          element={
+            auth.isAuthenticated ? (
+              <AsistenciaFormPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
       </Routes>
     </AuthContext.Provider>
   );
 }
-
-{/* LISTA ASISTENCIAS */}
-<Route
-  path="/asistencias"
-  element={
-    auth.isAuthenticated ? <AsistenciaListPage /> : <Navigate to="/login" />
-  }
-/>
-
-{/* CREAR ASISTENCIA */}
-<Route
-  path="/asistencias/nueva"
-  element={
-    auth.isAuthenticated ? <AsistenciaFormPage /> : <Navigate to="/login" />
-  }
-/>
-
-{/* EDITAR ASISTENCIA */}
-<Route
-  path="/asistencias/:id"
-  element={
-    auth.isAuthenticated ? <AsistenciaFormPage /> : <Navigate to="/login" />
-  }
-/>
