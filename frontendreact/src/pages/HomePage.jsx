@@ -15,7 +15,9 @@ export default function HomePage() {
         <li>
           <Link to="/asistencias">Asistencias</Link>
         </li>
-        {/* Más adelante agregamos Accidentes */}
+         <li>
+          <Link to="/accidentes">Accidentes</Link>
+        </li>
       </ul>
     </div>
   );
