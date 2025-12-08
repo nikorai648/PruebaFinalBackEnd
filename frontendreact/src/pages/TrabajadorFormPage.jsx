@@ -5,6 +5,7 @@ import {
   getTrabajador,
   updateTrabajador,
 } from "../api/trabajadores";
+
 const initialForm = {
   rut: "",
   nombre: "",
@@ -24,8 +25,19 @@ export default function TrabajadorFormPage() {
   useEffect(() => {
     if (esEditar) {
       getTrabajador(id)
-        .then((data) => setForm(data))
+        .then((data) =>
+          setForm({
+            rut: data.rut || "",
+            nombre: data.nombre || "",
+            apellido: data.apellido || "",
+            turno: data.turno || "DIURNO",
+            tipo: data.tipo || "",
+          })
+        )
         .catch(() => setError("No se pudo cargar el trabajador"));
+    } else {
+      // si es nuevo, aseguramos el estado inicial correcto
+      setForm(initialForm);
     }
   }, [id, esEditar]);
 
@@ -70,42 +82,58 @@ export default function TrabajadorFormPage() {
       {error && <div className="alert alert-danger">{error}</div>}
 
       <form className="row g-3" onSubmit={handleSubmit}>
+        {/* RUT */}
         <div className="col-12">
-          <label className="form-label">RUT</label>
+          <label className="form-label" htmlFor="rut">
+            RUT
+          </label>
           <input
+            id="rut"
             name="rut"
             className="form-control"
-            value={form.rut}
+            value={form.rut || ""}
             onChange={handleChange}
           />
         </div>
 
+        {/* Nombre */}
         <div className="col-md-6">
-          <label className="form-label">Nombre</label>
+          <label className="form-label" htmlFor="nombre">
+            Nombre
+          </label>
           <input
+            id="nombre"
             name="nombre"
             className="form-control"
-            value={form.nombre}
+            value={form.nombre || ""}
             onChange={handleChange}
           />
         </div>
 
+        {/* Apellido */}
         <div className="col-md-6">
-          <label className="form-label">Apellido</label>
+          <label className="form-label" htmlFor="apellido">
+            Apellido
+          </label>
           <input
+            id="apellido"
             name="apellido"
             className="form-control"
-            value={form.apellido}
+            value={form.apellido || ""}
             onChange={handleChange}
           />
         </div>
 
+        {/* Turno */}
         <div className="col-md-6">
-          <label className="form-label">Turno</label>
+          <label className="form-label" htmlFor="turno">
+            Turno
+          </label>
           <select
+            id="turno"
             name="turno"
             className="form-select"
-            value={form.turno}
+            value={form.turno || "DIURNO"}
             onChange={handleChange}
           >
             <option value="DIURNO">Diurno</option>
@@ -114,13 +142,17 @@ export default function TrabajadorFormPage() {
           </select>
         </div>
 
+        {/* Tipo */}
         <div className="col-md-6">
-          <label className="form-label">Tipo (cargo + contrato)</label>
+          <label className="form-label" htmlFor="tipo">
+            Tipo (cargo + contrato)
+          </label>
           <input
+            id="tipo"
             name="tipo"
             className="form-control"
             placeholder="Operario - INDEFINIDO"
-            value={form.tipo}
+            value={form.tipo || ""}
             onChange={handleChange}
           />
         </div>
