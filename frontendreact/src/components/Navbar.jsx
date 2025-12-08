@@ -14,14 +14,18 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark px-3">
       <Link className="navbar-brand" to="/">
-        Optimizacion y Logistica
+        Optimización y Logística
       </Link>
 
       <div className="navbar-nav me-auto">
         <Link className="nav-link" to="/trabajadores">
           Trabajadores
         </Link>
-        {/* Más enlaces después: Asistencias, Accidentes, etc. */}
+
+        {/* ✅ NUEVO LINK */}
+        <Link className="nav-link" to="/asistencias">
+          Asistencias
+        </Link>
       </div>
 
       <span className="navbar-text text-white me-3">
