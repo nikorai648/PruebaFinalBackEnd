@@ -1,7 +1,7 @@
 // src/api/asistencias.js
 import { API_URL, getAuthHeaders } from "./config";
 
-// 🔹 Listar asistencias
+// OBTENER LISTA
 export async function getAsistencias() {
   const res = await fetch(`${API_URL}/api/asistencias/`, {
     headers: {
@@ -10,28 +10,23 @@ export async function getAsistencias() {
     },
   });
 
-  if (!res.ok) {
-    throw new Error("Error al cargar asistencias");
-  }
+  if (!res.ok) throw new Error("Error al cargar asistencias");
   return res.json();
 }
 
-// 🔹 Obtener una asistencia por ID
+// OBTENER UNA
 export async function getAsistencia(id) {
   const res = await fetch(`${API_URL}/api/asistencias/${id}/`, {
     headers: {
-      "Content-Type": "application/json",
       ...getAuthHeaders(),
     },
   });
 
-  if (!res.ok) {
-    throw new Error("Error al cargar asistencia");
-  }
+  if (!res.ok) throw new Error("No se pudo obtener asistencia");
   return res.json();
 }
 
-// 🔹 Crear asistencia
+// CREAR
 export async function createAsistencia(data) {
   const res = await fetch(`${API_URL}/api/asistencias/`, {
     method: "POST",
@@ -42,15 +37,11 @@ export async function createAsistencia(data) {
     body: JSON.stringify(data),
   });
 
-  if (!res.ok) {
-    const errorData = await res.json().catch(() => ({}));
-    console.error("Error creación asistencia:", errorData);
-    throw new Error("Error al crear asistencia");
-  }
+  if (!res.ok) throw new Error("Error al crear asistencia");
   return res.json();
 }
 
-// 🔹 Actualizar asistencia
+// ACTUALIZAR
 export async function updateAsistencia(id, data) {
   const res = await fetch(`${API_URL}/api/asistencias/${id}/`, {
     method: "PUT",
@@ -61,15 +52,11 @@ export async function updateAsistencia(id, data) {
     body: JSON.stringify(data),
   });
 
-  if (!res.ok) {
-    const errorData = await res.json().catch(() => ({}));
-    console.error("Error actualización asistencia:", errorData);
-    throw new Error("Error al actualizar asistencia");
-  }
+  if (!res.ok) throw new Error("Error al actualizar asistencia");
   return res.json();
 }
 
-// 🔹 Eliminar asistencia
+// ELIMINAR
 export async function deleteAsistencia(id) {
   const res = await fetch(`${API_URL}/api/asistencias/${id}/`, {
     method: "DELETE",
@@ -78,8 +65,6 @@ export async function deleteAsistencia(id) {
     },
   });
 
-  if (!res.ok) {
-    throw new Error("Error al eliminar asistencia");
-  }
+  if (!res.ok) throw new Error("Error al eliminar asistencia");
   return true;
 }
