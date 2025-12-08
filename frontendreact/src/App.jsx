@@ -11,6 +11,8 @@ import AsistenciaListPage from "./pages/AsistenciaListPage";
 import AsistenciaFormPage from "./pages/AsistenciaFormPage";
 import AccidenteListPage from "./pages/AccidenteListPage";
 import AccidenteFormPage from "./pages/AccidenteFormPage";
+import EficienciaListPage from "./pages/EficienciaListPage";
+import EficienciaFormPage from "./pages/EficienciaFormPage";
 
 export const AuthContext = React.createContext(null);
 
@@ -156,3 +158,39 @@ export default function App() {
     </AuthContext.Provider>
   );
 }
+
+{/* LISTA EFICIENCIAS */}
+<Route
+  path="/eficiencias"
+  element={
+    auth.isAuthenticated ? (
+      <EficienciaListPage />
+    ) : (
+      <Navigate to="/login" />
+    )
+  }
+/>
+
+{/* CREAR EFICIENCIA */}
+<Route
+  path="/eficiencias/nueva"
+  element={
+    auth.isAuthenticated ? (
+      <EficienciaFormPage />
+    ) : (
+      <Navigate to="/login" />
+    )
+  }
+/>
+
+{/* EDITAR EFICIENCIA */}
+<Route
+  path="/eficiencias/:id"
+  element={
+    auth.isAuthenticated ? (
+      <EficienciaFormPage />
+    ) : (
+      <Navigate to="/login" />
+    )
+  }
+/>
