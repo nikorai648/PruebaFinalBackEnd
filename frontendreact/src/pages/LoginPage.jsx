@@ -20,11 +20,11 @@ export default function LoginPage() {
     }
 
     try {
-      const res = await loginApi(username, password);
-      login(res.token, res.username);
-      navigate("/");
+      const data = await loginApi(username, password); 
+      login(data.token, username);                     
+      navigate("/");                                 
     } catch (err) {
-      setError("Credenciales inválidas.");
+      setError("Credenciales inválidas o API no disponible.");
     }
   };
 
