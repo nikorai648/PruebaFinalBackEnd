@@ -47,7 +47,7 @@ export default function LoginPage() {
             />
           </div>
 
-          <div className="mb-3">
+           <div className="mb-3">
             <label className="form-label">Contraseña</label>
             <input
               type="password"
@@ -55,9 +55,10 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
+              required
             />
           </div>
-
+          
           <button className="btn btn-primary w-100">Entrar</button>
         </form>
       </div>
