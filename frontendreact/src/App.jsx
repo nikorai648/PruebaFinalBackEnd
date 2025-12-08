@@ -15,7 +15,6 @@ import AccidenteFormPage from "./pages/AccidenteFormPage";
 export const AuthContext = React.createContext(null);
 
 export default function App() {
-  // Estado inicial leyendo desde localStorage
   const [auth, setAuth] = useState({
     isAuthenticated: !!localStorage.getItem("token"),
     token: localStorage.getItem("token"),
@@ -28,7 +27,6 @@ export default function App() {
       token,
       username,
     });
-
     localStorage.setItem("token", token);
     localStorage.setItem("username", username);
   };
@@ -39,7 +37,6 @@ export default function App() {
       token: null,
       username: null,
     });
-
     localStorage.removeItem("token");
     localStorage.removeItem("username");
   };
@@ -60,7 +57,7 @@ export default function App() {
           }
         />
 
-        {/* LISTA TRABAJADORES */}
+        {/* TRABAJADORES */}
         <Route
           path="/trabajadores"
           element={
@@ -71,8 +68,6 @@ export default function App() {
             )
           }
         />
-
-        {/* CREAR TRABAJADOR */}
         <Route
           path="/trabajadores/nuevo"
           element={
@@ -83,8 +78,6 @@ export default function App() {
             )
           }
         />
-
-        {/* EDITAR TRABAJADOR */}
         <Route
           path="/trabajadores/:id"
           element={
@@ -96,7 +89,7 @@ export default function App() {
           }
         />
 
-        {/* LISTA ASISTENCIAS */}
+        {/* ASISTENCIAS */}
         <Route
           path="/asistencias"
           element={
@@ -107,8 +100,6 @@ export default function App() {
             )
           }
         />
-
-        {/* CREAR ASISTENCIA */}
         <Route
           path="/asistencias/nueva"
           element={
@@ -119,8 +110,6 @@ export default function App() {
             )
           }
         />
-
-        {/* EDITAR ASISTENCIA */}
         <Route
           path="/asistencias/:id"
           element={
@@ -131,31 +120,39 @@ export default function App() {
             )
           }
         />
+
+        {/* ACCIDENTES */}
+        <Route
+          path="/accidentes"
+          element={
+            auth.isAuthenticated ? (
+              <AccidenteListPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/accidentes/nuevo"
+          element={
+            auth.isAuthenticated ? (
+              <AccidenteFormPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/accidentes/:id"
+          element={
+            auth.isAuthenticated ? (
+              <AccidenteFormPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
       </Routes>
     </AuthContext.Provider>
   );
 }
-
-{/* LISTA ACCIDENTES */}
-<Route
-  path="/accidentes"
-  element={
-    auth.isAuthenticated ? <AccidenteListPage /> : <Navigate to="/login" />
-  }
-/>
-
-{/* CREAR ACCIDENTE */}
-<Route
-  path="/accidentes/nuevo"
-  element={
-    auth.isAuthenticated ? <AccidenteFormPage /> : <Navigate to="/login" />
-  }
-/>
-
-{/* EDITAR ACCIDENTE */}
-<Route
-  path="/accidentes/:id"
-  element={
-    auth.isAuthenticated ? <AccidenteFormPage /> : <Navigate to="/login" />
-  }
-/>
