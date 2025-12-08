@@ -1,3 +1,4 @@
+// src/components/Navbar.jsx
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../App";
@@ -14,15 +15,13 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark px-3">
       <Link className="navbar-brand" to="/">
-        Optimización y Logística
+        Optimizacion y Logistica
       </Link>
 
       <div className="navbar-nav me-auto">
         <Link className="nav-link" to="/trabajadores">
           Trabajadores
         </Link>
-
-        {/* ✅ NUEVO LINK */}
         <Link className="nav-link" to="/asistencias">
           Asistencias
         </Link>
@@ -38,3 +37,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
