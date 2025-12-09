@@ -19,26 +19,15 @@ export default function Navbar() {
       </Link>
 
       <div className="navbar-nav me-auto">
-        <Link className="nav-link" to="/trabajadores">
-          Trabajadores
-        </Link>
-        <Link className="nav-link" to="/asistencias">
-          Asistencias
-        </Link>
-         <Link className="nav-link" to="/accidentes">
-          Accidentes
-         </Link>
-         <Link className="nav-link" to="/eficiencias">
-          Eficiencias
-         </Link>
-         <Link className="nav-link" to="/desempenos">
-           Desempeños
-         </Link>  
-         <Link className="nav-link" to="/sueldos">
-           Sueldos
-         </Link>
-      </div>
 
+  <Link className="nav-link" to="/trabajadores">Trabajadores</Link>
+  <Link className="nav-link" to="/asistencias">Asistencias</Link>
+  <Link className="nav-link" to="/accidentes">Accidentes</Link>
+  <Link className="nav-link" to="/eficiencias">Eficiencia</Link>
+  <Link className="nav-link" to="/desempenos">Desempeño</Link>
+  <Link className="nav-link" to="/sueldos">Sueldos</Link>
+
+</div>
       <span className="navbar-text text-white me-3">
         Hola, {auth.username}
       </span>
