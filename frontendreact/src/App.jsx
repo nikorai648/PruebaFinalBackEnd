@@ -27,7 +27,6 @@ import SueldoFormPage from "./pages/SueldoFormPage";
 export const AuthContext = React.createContext(null);
 
 export default function App() {
-  // Estado inicial leyendo desde localStorage
   const [auth, setAuth] = useState({
     isAuthenticated: !!localStorage.getItem("token"),
     token: localStorage.getItem("token"),
@@ -59,209 +58,47 @@ export default function App() {
       {auth.isAuthenticated && <Navbar />}
 
       <Routes>
+
         {/* LOGIN */}
         <Route path="/login" element={<LoginPage />} />
 
         {/* HOME */}
         <Route
           path="/"
-          element={
-            auth.isAuthenticated ? <HomePage /> : <Navigate to="/login" />
-          }
+          element={auth.isAuthenticated ? <HomePage /> : <Navigate to="/login" />}
         />
 
         {/* TRABAJADORES */}
-        <Route
-          path="/trabajadores"
-          element={
-            auth.isAuthenticated ? (
-              <TrabajadorListPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/trabajadores/nuevo"
-          element={
-            auth.isAuthenticated ? (
-              <TrabajadorFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/trabajadores/:id"
-          element={
-            auth.isAuthenticated ? (
-              <TrabajadorFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+        <Route path="/trabajadores" element={auth.isAuthenticated ? <TrabajadorListPage /> : <Navigate to="/login" />} />
+        <Route path="/trabajadores/nuevo" element={auth.isAuthenticated ? <TrabajadorFormPage /> : <Navigate to="/login" />} />
+        <Route path="/trabajadores/:id" element={auth.isAuthenticated ? <TrabajadorFormPage /> : <Navigate to="/login" />} />
 
         {/* ASISTENCIAS */}
-        <Route
-          path="/asistencias"
-          element={
-            auth.isAuthenticated ? (
-              <AsistenciaListPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/asistencias/nueva"
-          element={
-            auth.isAuthenticated ? (
-              <AsistenciaFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/asistencias/:id"
-          element={
-            auth.isAuthenticated ? (
-              <AsistenciaFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+        <Route path="/asistencias" element={auth.isAuthenticated ? <AsistenciaListPage /> : <Navigate to="/login" />} />
+        <Route path="/asistencias/nueva" element={auth.isAuthenticated ? <AsistenciaFormPage /> : <Navigate to="/login" />} />
+        <Route path="/asistencias/:id" element={auth.isAuthenticated ? <AsistenciaFormPage /> : <Navigate to="/login" />} />
 
         {/* ACCIDENTES */}
-        <Route
-          path="/accidentes"
-          element={
-            auth.isAuthenticated ? (
-              <AccidenteListPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/accidentes/nuevo"
-          element={
-            auth.isAuthenticated ? (
-              <AccidenteFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/accidentes/:id"
-          element={
-            auth.isAuthenticated ? (
-              <AccidenteFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+        <Route path="/accidentes" element={auth.isAuthenticated ? <AccidenteListPage /> : <Navigate to="/login" />} />
+        <Route path="/accidentes/nuevo" element={auth.isAuthenticated ? <AccidenteFormPage /> : <Navigate to="/login" />} />
+        <Route path="/accidentes/:id" element={auth.isAuthenticated ? <AccidenteFormPage /> : <Navigate to="/login" />} />
 
         {/* EFICIENCIAS */}
-        <Route
-          path="/eficiencias"
-          element={
-            auth.isAuthenticated ? (
-              <EficienciaListPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/eficiencias/nueva"
-          element={
-            auth.isAuthenticated ? (
-              <EficienciaFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/eficiencias/:id"
-          element={
-            auth.isAuthenticated ? (
-              <EficienciaFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+        <Route path="/eficiencias" element={auth.isAuthenticated ? <EficienciaListPage /> : <Navigate to="/login" />} />
+        <Route path="/eficiencias/nueva" element={auth.isAuthenticated ? <EficienciaFormPage /> : <Navigate to="/login" />} />
+        <Route path="/eficiencias/:id" element={auth.isAuthenticated ? <EficienciaFormPage /> : <Navigate to="/login" />} />
 
-        {/* DESEMPEÑOS */}
-        <Route
-          path="/desempenos"
-          element={
-            auth.isAuthenticated ? (
-              <DesempenoListPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/desempenos/nuevo"
-          element={
-            auth.isAuthenticated ? (
-              <DesempenoFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/desempenos/:id"
-          element={
-            auth.isAuthenticated ? (
-              <DesempenoFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
+        {/* DESEMPEÑO */}
+        <Route path="/desempenos" element={auth.isAuthenticated ? <DesempenoListPage /> : <Navigate to="/login" />} />
+        <Route path="/desempenos/nuevo" element={auth.isAuthenticated ? <DesempenoFormPage /> : <Navigate to="/login" />} />
+        <Route path="/desempenos/:id" element={auth.isAuthenticated ? <DesempenoFormPage /> : <Navigate to="/login" />} />
+
+        {/* SUELDOS */}
+        <Route path="/sueldos" element={auth.isAuthenticated ? <SueldoListPage /> : <Navigate to="/login" />} />
+        <Route path="/sueldos/nuevo" element={auth.isAuthenticated ? <SueldoFormPage /> : <Navigate to="/login" />} />
+        <Route path="/sueldos/:id" element={auth.isAuthenticated ? <SueldoFormPage /> : <Navigate to="/login" />} />
+
       </Routes>
-
-       {/* SUELDOS */}
-        <Route
-          path="/sueldos"
-          element={
-            auth.isAuthenticated ? (
-              <SueldoListPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/sueldos/nuevo"
-          element={
-            auth.isAuthenticated ? (
-              <SueldoFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route
-          path="/sueldos/:id"
-          element={
-            auth.isAuthenticated ? (
-              <SueldoFormPage />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
     </AuthContext.Provider>
   );
 }
