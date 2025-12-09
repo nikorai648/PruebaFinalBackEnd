@@ -34,6 +34,9 @@ export default function Navbar() {
          <Link className="nav-link" to="/desempenos">
            Desempeños
          </Link>  
+         <Link className="nav-link" to="/sueldos">
+           Sueldos
+         </Link>
       </div>
 
       <span className="navbar-text text-white me-3">
