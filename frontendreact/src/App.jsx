@@ -18,6 +18,9 @@ import AccidenteFormPage from "./pages/AccidenteFormPage";
 import EficienciaListPage from "./pages/EficienciaListPage";
 import EficienciaFormPage from "./pages/EficienciaFormPage";
 
+import DesempenoListPage from "./pages/DesempenoListPage";
+import DesempenoFormPage from "./pages/DesempenoFormPage";
+
 export const AuthContext = React.createContext(null);
 
 export default function App() {
@@ -186,6 +189,38 @@ export default function App() {
           element={
             auth.isAuthenticated ? (
               <EficienciaFormPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+
+        {/* DESEMPEÑOS */}
+        <Route
+          path="/desempenos"
+          element={
+            auth.isAuthenticated ? (
+              <DesempenoListPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/desempenos/nuevo"
+          element={
+            auth.isAuthenticated ? (
+              <DesempenoFormPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/desempenos/:id"
+          element={
+            auth.isAuthenticated ? (
+              <DesempenoFormPage />
             ) : (
               <Navigate to="/login" />
             )

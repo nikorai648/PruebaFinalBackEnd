@@ -31,6 +31,9 @@ export default function Navbar() {
          <Link className="nav-link" to="/eficiencias">
           Eficiencias
          </Link>
+         <Link className="nav-link" to="/desempenos">
+           Desempeños
+         </Link>  
       </div>
 
       <span className="navbar-text text-white me-3">
