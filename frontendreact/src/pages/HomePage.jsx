@@ -15,7 +15,7 @@ export default function HomePage() {
         <li>
           <Link to="/asistencias">Asistencias</Link>
         </li>
-         <li>
+        <li>
           <Link to="/accidentes">Accidentes</Link>
         </li>
         <li>
@@ -23,11 +23,10 @@ export default function HomePage() {
         </li>
         <li>
           <Link to="/desempenos">Desempeño de Trabajadores</Link>
-          <li>
-            <Link to="/sueldos">Sueldos</Link>
-            </li>
         </li>
-
+        <li>
+          <Link to="/sueldos">Sueldos</Link>
+        </li>
       </ul>
     </div>
   );
