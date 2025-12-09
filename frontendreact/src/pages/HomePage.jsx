@@ -23,6 +23,9 @@ export default function HomePage() {
         </li>
         <li>
           <Link to="/desempenos">Desempeño de Trabajadores</Link>
+          <li>
+            <Link to="/sueldos">Sueldos</Link>
+            </li>
         </li>
 
       </ul>
