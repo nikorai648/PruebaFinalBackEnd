@@ -21,6 +21,10 @@ export default function HomePage() {
         <li>
           <Link to="/eficiencias">Eficiencia de Trabajadores</Link>
         </li>
+        <li>
+          <Link to="/desempenos">Desempeño de Trabajadores</Link>
+        </li>
+
       </ul>
     </div>
   );
