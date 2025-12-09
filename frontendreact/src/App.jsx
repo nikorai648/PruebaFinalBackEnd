@@ -21,6 +21,9 @@ import EficienciaFormPage from "./pages/EficienciaFormPage";
 import DesempenoListPage from "./pages/DesempenoListPage";
 import DesempenoFormPage from "./pages/DesempenoFormPage";
 
+import SueldoListPage from "./pages/SueldoListPage";
+import SueldoFormPage from "./pages/SueldoFormPage";
+
 export const AuthContext = React.createContext(null);
 
 export default function App() {
@@ -227,6 +230,38 @@ export default function App() {
           }
         />
       </Routes>
+
+       {/* SUELDOS */}
+        <Route
+          path="/sueldos"
+          element={
+            auth.isAuthenticated ? (
+              <SueldoListPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/sueldos/nuevo"
+          element={
+            auth.isAuthenticated ? (
+              <SueldoFormPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/sueldos/:id"
+          element={
+            auth.isAuthenticated ? (
+              <SueldoFormPage />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
     </AuthContext.Provider>
   );
 }
