@@ -12,7 +12,7 @@
     </div>
 
     <span class="navbar-text text-white me-3">
-      Hola, {{ auth.state.username }}
+      Hola, {{ auth.username }}
     </span>
 
     <button class="btn btn-outline-light btn-sm" @click="handleLogout">
@@ -23,7 +23,7 @@
 
 <script>
 import { useRouter, RouterLink } from "vue-router";
-import { useAuth } from "../auth";
+import { useAuth } from "./auth";
 
 export default {
   components: { RouterLink },

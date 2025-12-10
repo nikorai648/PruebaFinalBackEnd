@@ -1,5 +1,5 @@
 // src/auth.js
-import { reactive } from "vue";
+import { reactive, toRefs } from "vue";
 
 const state = reactive({
   isAuthenticated: !!localStorage.getItem("token"),
@@ -26,5 +26,9 @@ function logout() {
 }
 
 export function useAuth() {
-  return { state, login, logout };
+  return {
+    ...toRefs(state),
+    login,
+    logout,
+  };
 }
