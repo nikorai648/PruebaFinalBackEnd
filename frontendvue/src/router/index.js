@@ -9,6 +9,9 @@ import TrabajadorFormView from "../views/TrabajadorFormView.vue";
 
 import AsistenciaListView from "../views/AsistenciaListView.vue";
 import AsistenciaFormView from "../views/AsistenciaFormView.vue";
+
+import AccidenteListView from "../views/AccidenteListView.vue";
+import AccidenteFormView from "../views/AccidenteFormView.vue";
 // ... (otras vistas que ya tengas)
 
 const routes = [
@@ -24,6 +27,11 @@ const routes = [
   { path: "/asistencias", component: AsistenciaListView },
   { path: "/asistencias/nueva", component: AsistenciaFormView },
   { path: "/asistencias/:id", component: AsistenciaFormView, props: true },
+
+  // Accidentes
+  { path: "/accidentes", component: AccidenteListView },
+  { path: "/accidentes/nuevo", component: AccidenteFormView },
+  { path: "/accidentes/:id", component: AccidenteFormView, props: true },
 
   // aquí luego irán accidentes, eficiencia, etc.
 ];
