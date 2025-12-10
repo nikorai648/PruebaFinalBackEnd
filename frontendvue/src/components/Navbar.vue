@@ -1,14 +1,17 @@
+<!-- src/components/Navbar.vue -->
 <script setup>
-import { inject } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
+import { useContext } from "vue";
+import { useRouter, RouterLink } from "vue-router";
+import { inject } from "vue";
 
-const auth = inject('auth')
-const router = useRouter()
+// Supongo que estás usando provide/inject para Auth
+const authContext = inject("authContext");
+const router = useRouter();
 
-function onLogout() {
-  auth.logout()
-  router.push('/login')
-}
+const handleLogout = () => {
+  authContext.logout();
+  router.push("/login");
+};
 </script>
 
 <template>
@@ -16,16 +19,16 @@ function onLogout() {
     <RouterLink class="navbar-brand" to="/">Optimizacion y Logistica</RouterLink>
 
     <div class="navbar-nav me-auto">
-      <RouterLink class="nav-link" to="/trabajadores">
-        Trabajadores
-      </RouterLink>
+      <RouterLink class="nav-link" to="/trabajadores">Trabajadores</RouterLink>
+      <RouterLink class="nav-link" to="/asistencias">Asistencias</RouterLink>
+      <!-- luego agregaremos Accidentes, Eficiencias, etc. -->
     </div>
 
     <span class="navbar-text text-white me-3">
-      Hola, {{ auth.username }}
+      Hola, {{ authContext.auth.username }}
     </span>
 
-    <button class="btn btn-outline-light btn-sm" @click="onLogout">
+    <button class="btn btn-outline-light btn-sm" @click="handleLogout">
       Salir
     </button>
   </nav>
