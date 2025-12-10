@@ -1,25 +1,85 @@
-import api from "./config";
+// src/api/trabajadores.js
+import { API_URL, getAuthHeaders } from "./config";
 
+// 🔹 Obtener lista de trabajadores
 export async function getTrabajadores() {
-  const res = await api.get("/api/trabajadores/");
-  return res.data;
+  const res = await fetch(`${API_URL}/api/trabajadores/`, {
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al cargar trabajadores");
+  }
+  return res.json();
 }
 
+// 🔹 Obtener un trabajador por ID
 export async function getTrabajador(id) {
-  const res = await api.get(`/api/trabajadores/${id}/`);
-  return res.data;
+  const res = await fetch(`${API_URL}/api/trabajadores/${id}/`, {
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al cargar trabajador");
+  }
+  return res.json();
 }
 
+// 🔹 Crear trabajador
 export async function createTrabajador(data) {
-  const res = await api.post("/api/trabajadores/", data);
-  return res.data;
+  const res = await fetch(`${API_URL}/api/trabajadores/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    console.error("Error creación:", errorData);
+    throw new Error("Error al crear trabajador");
+  }
+  return res.json();
 }
 
+// 🔹 Actualizar trabajador
 export async function updateTrabajador(id, data) {
-  const res = await api.put(`/api/trabajadores/${id}/`, data);
-  return res.data;
+  const res = await fetch(`${API_URL}/api/trabajadores/${id}/`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      ...getAuthHeaders(),
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json().catch(() => ({}));
+    console.error("Error actualización:", errorData);
+    throw new Error("Error al actualizar trabajador");
+  }
+  return res.json();
 }
 
+// 🔹 Eliminar trabajador
 export async function deleteTrabajador(id) {
-  await api.delete(`/api/trabajadores/${id}/`);
+  const res = await fetch(`${API_URL}/api/trabajadores/${id}/`, {
+    method: "DELETE",
+    headers: {
+      ...getAuthHeaders(),
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al eliminar trabajador");
+  }
+  return true;
 }
