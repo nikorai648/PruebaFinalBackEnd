@@ -1,22 +1,21 @@
+<!-- src/views/HomeView.vue -->
+<script setup>
+import { RouterLink } from "vue-router";
+</script>
+
 <template>
   <div class="container mt-5">
     <h1>Opciones del Sistema</h1>
     <p>Sistema de Trabajadores, Asistencias y Accidentes.</p>
 
     <ul>
-      <li><RouterLink to="/trabajadores">Trabajadores</RouterLink></li>
-      <li><RouterLink to="/asistencias">Asistencias</RouterLink></li>
-      <li><RouterLink to="/accidentes">Accidentes</RouterLink></li>
-      <li><RouterLink to="/eficiencias">Eficiencia de Trabajadores</RouterLink></li>
-      <li><RouterLink to="/desempenos">Desempeño de Trabajadores</RouterLink></li>
-      <li><RouterLink to="/sueldos">Sueldos</RouterLink></li>
+      <li>
+        <RouterLink to="/trabajadores">Trabajadores</RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/asistencias">Asistencias</RouterLink>
+      </li>
+      <!-- después agregamos Accidentes, Eficiencias, etc. -->
     </ul>
   </div>
 </template>
-
-<script>
-import { RouterLink } from "vue-router";
-export default {
-  components: { RouterLink },
-};
-</script>
