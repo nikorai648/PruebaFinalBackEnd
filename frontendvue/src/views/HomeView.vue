@@ -1,5 +1,26 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+<template>
+  <div class="container mt-5">
+    <h1>Opciones del Sistema</h1>
+    <p>Sistema de Trabajadores, Asistencias y Accidentes.</p>
+
+    <ul>
+      <li><RouterLink to="/trabajadores">Trabajadores</RouterLink></li>
+      <li><RouterLink to="/asistencias">Asistencias</RouterLink></li>
+      <li><RouterLink to="/accidentes">Accidentes</RouterLink></li>
+      <li><RouterLink to="/eficiencias">Eficiencia de Trabajadores</RouterLink></li>
+      <li><RouterLink to="/desempenos">Desempeño de Trabajadores</RouterLink></li>
+      <li><RouterLink to="/sueldos">Sueldos</RouterLink></li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import { RouterLink } from "vue-router";
+export default {
+  components: { RouterLink },
+};
+</script>
 </script>
 
 <template>
