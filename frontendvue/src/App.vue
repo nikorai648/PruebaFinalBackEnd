@@ -1,32 +1,19 @@
-<script setup>
-import { ref, provide } from 'vue'
-import { RouterView } from 'vue-router'
-import Navbar from './components/Navbar.vue'
-
-const isAuthenticated = ref(false)
-const username = ref(null)
-
-function handleLogin(user) {
-  isAuthenticated.value = true
-  username.value = user
-}
-
-function handleLogout() {
-  isAuthenticated.value = false
-  username.value = null
-}
-
-// Compartimos el estado de auth con otros componentes
-provide('auth', {
-  isAuthenticated,
-  username,
-  logout: handleLogout,
-})
-</script>
-
 <template>
   <div>
-    <Navbar v-if="isAuthenticated" />
-    <RouterView @login-success="handleLogin" />
+    <Navbar v-if="auth.state.isAuthenticated" />
+    <router-view />
   </div>
 </template>
+
+<script>
+import Navbar from "./components/Navbar.vue";
+import { useAuth } from "./auth";
+
+export default {
+  components: { Navbar },
+  setup() {
+    const auth = useAuth();
+    return { auth };
+  },
+};
+</script>
