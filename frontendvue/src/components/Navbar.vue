@@ -21,6 +21,7 @@ const handleLogout = () => {
     <div class="navbar-nav me-auto">
       <RouterLink class="nav-link" to="/trabajadores">Trabajadores</RouterLink>
       <RouterLink class="nav-link" to="/asistencias">Asistencias</RouterLink>
+      <RouterLink class="nav-link" to="/accidentes">Accidentes</RouterLink>
       <!-- luego agregaremos Accidentes, Eficiencias, etc. -->
     </div>
 
