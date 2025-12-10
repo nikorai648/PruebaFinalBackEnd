@@ -1,58 +1,66 @@
-<script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { login } from '../api/fakeApi'
-
-const router = useRouter()
-const emit = defineEmits(['login-success'])
-
-const username = ref('')
-const password = ref('')
-const error = ref('')
-
-async function onSubmit() {
-  error.value = ''
-
-  if (!username.value || !password.value) {
-    error.value = 'Usuario y contraseña son obligatorios.'
-    return
-  }
-
-  try {
-    const res = await login(username.value, password.value)
-    emit('login-success', res.username)
-    router.push('/')
-  } catch (err) {
-    error.value = 'Credenciales inválidas.'
-  }
-}
-</script>
-
 <template>
   <div class="container mt-5">
     <div class="col-md-4">
-      <h3>Ingreso</h3>
+      <h3>Ingreso (API Django)</h3>
 
-      <div v-if="error" class="alert alert-danger">
-        {{ error }}
-      </div>
+      <div v-if="error" class="alert alert-danger">{{ error }}</div>
 
-      <form @submit.prevent="onSubmit">
+      <form @submit.prevent="handleSubmit">
         <div class="mb-3">
           <label class="form-label">Usuario</label>
-          <input v-model="username" class="form-control" autocomplete="username" />
+          <input
+            v-model="username"
+            class="form-control"
+            autocomplete="username"
+            required
+          />
         </div>
+
         <div class="mb-3">
           <label class="form-label">Contraseña</label>
           <input
-            v-model="password"
             type="password"
+            v-model="password"
             class="form-control"
             autocomplete="current-password"
+            required
           />
         </div>
+
         <button class="btn btn-primary w-100">Entrar</button>
       </form>
     </div>
   </div>
 </template>
+
+<script>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { loginApi } from "../api/auth";
+import { useAuth } from "../auth";
+
+export default {
+  setup() {
+    const username = ref("");
+    const password = ref("");
+    const error = ref("");
+
+    const router = useRouter();
+    const auth = useAuth();
+
+    const handleSubmit = async () => {
+      error.value = "";
+
+      try {
+        const data = await loginApi(username.value, password.value);
+        auth.login(data.token, username.value);
+        router.push("/");
+      } catch (e) {
+        error.value = "Credenciales inválidas o API no disponible.";
+      }
+    };
+
+    return { username, password, error, handleSubmit };
+  },
+};
+</script>
