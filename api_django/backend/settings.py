@@ -82,7 +82,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'optimizacion_logistica',  
-        'USER': 'admin',                    
+        'USER': 'root',                    
         'PASSWORD': '6487063a1234',     
         'HOST': 'localhost',
         'PORT': '3306',
