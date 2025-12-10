@@ -18,7 +18,10 @@ import EficienciaFormView from "../views/EficienciaFormView.vue";
 
 import DesempenoListView from "../views/DesempenoListView.vue";
 import DesempenoFormView from "../views/DesempenoFormView.vue";
-// ... (otras vistas que ya tengas)
+
+import SueldoListView from "../views/SueldoListView.vue";
+import SueldoFormView from "../views/SueldoFormView.vue";
+
 
 const routes = [
   { path: "/login", name: "login", component: LoginView },
@@ -46,6 +49,10 @@ const routes = [
   { path: "/desempenos", component: DesempenoListView },
   { path: "/desempenos/nuevo", component: DesempenoFormView },
   { path: "/desempenos/:id", component: DesempenoFormView, props: true },
+
+  { path: "/sueldos", component: SueldoListView },
+  { path: "/sueldos/nuevo", component: SueldoFormView },
+  { path: "/sueldos/:id", component: SueldoFormView, props: true },
 
   // aquí luego irán accidentes, eficiencia, etc.
 ];
