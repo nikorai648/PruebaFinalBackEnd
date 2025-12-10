@@ -1,34 +1,28 @@
 // src/auth.js
-import { reactive, toRefs } from "vue";
+import { reactive } from "vue";
 
 const state = reactive({
-  isAuthenticated: !!localStorage.getItem("token"),
-  token: localStorage.getItem("token"),
-  username: localStorage.getItem("username"),
+  isAuthenticated: true, // por ahora lo dejamos siempre logueado
+  username: localStorage.getItem("username") || "admin",
+  token: localStorage.getItem("token") || null,
 });
 
-function login(token, username) {
+function login(username, token) {
   state.isAuthenticated = true;
-  state.token = token;
   state.username = username;
-
-  localStorage.setItem("token", token);
+  state.token = token;
   localStorage.setItem("username", username);
+  if (token) localStorage.setItem("token", token);
 }
 
 function logout() {
   state.isAuthenticated = false;
+  state.username = "";
   state.token = null;
-  state.username = null;
-
-  localStorage.removeItem("token");
   localStorage.removeItem("username");
+  localStorage.removeItem("token");
 }
 
 export function useAuth() {
-  return {
-    ...toRefs(state),
-    login,
-    logout,
-  };
+  return { state, login, logout };
 }
