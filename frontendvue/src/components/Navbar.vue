@@ -23,6 +23,8 @@ const handleLogout = () => {
       <RouterLink class="nav-link" to="/asistencias">Asistencias</RouterLink>
       <RouterLink class="nav-link" to="/accidentes">Accidentes</RouterLink>
       <RouterLink class="nav-link" to="/eficiencias"> Eficiencia</RouterLink>
+      <RouterLink class="nav-link" to="/desempenos">Desempeño</RouterLink>
+
       <!-- luego agregaremos Accidentes, Eficiencias, etc. -->
     </div>
 

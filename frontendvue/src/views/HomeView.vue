@@ -21,6 +21,9 @@ import { RouterLink } from "vue-router";
        <li>
         <RouterLink to="/eficiencias">Eficiencia de Trabajadores</RouterLink>
       </li>
+      <li>
+        <RouterLink to="/desempenos">Desempeño de Trabajadores</RouterLink>
+      </li>
       <!-- después agregamos Accidentes, Eficiencias, etc. -->
     </ul>
   </div>
