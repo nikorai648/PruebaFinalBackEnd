@@ -1,7 +1,19 @@
 // src/api/auth.js
-import api from "./config";
+import { API_URL } from "./config";
 
 export async function loginApi(username, password) {
-  const res = await api.post("/api/token/", { username, password });
-  return res.data; // { token: "..." }
+  const res = await fetch(`${API_URL}/api-token-auth/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username, password }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Error al iniciar sesión");
+  }
+
+  // DRF Token Auth devuelve { token: "..." }
+  return res.json();
 }
