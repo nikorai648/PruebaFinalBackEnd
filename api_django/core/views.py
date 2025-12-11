@@ -251,3 +251,19 @@ def sueldo_detail(request, pk):
     if request.method == 'DELETE':
         sueldo.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+from django.http import JsonResponse
+
+def home(request):
+    return JsonResponse({
+        "mensaje": "API Optimización Logística activa",
+        "endpoints": [
+            "/api/trabajadores/",
+            "/api/asistencias/",
+            "/api/accidentes/",
+            "/api/eficiencias/",
+            "/api/desempenos/",
+            "/api/sueldos/",
+            "/api/token/"
+        ]
+    })

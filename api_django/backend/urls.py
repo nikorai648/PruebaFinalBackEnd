@@ -19,9 +19,11 @@ from django.urls import path
 from core import views
 from rest_framework.authtoken.views import obtain_auth_token
 
+
 urlpatterns = [
+    path('', views.home),
     path('admin/', admin.site.urls),
-     path('api/token/', obtain_auth_token, name='api_token_auth'),
+    path('api/token/', obtain_auth_token, name='api_token_auth'),
     path('api/trabajadores/', views.trabajador_list, name='trabajador_list'),
     path('api/trabajadores/<int:pk>/', views.trabajador_detail, name='trabajador_detail'),
     path('api/asistencias/', views.asistencia_list, name='asistencia_list'),
