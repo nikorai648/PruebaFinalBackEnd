@@ -63,4 +63,11 @@ urlpatterns = [
     # 👉 ReDoc (documentación alternativa)
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
          name='schema-redoc'),
+
+    path('api/schema/', schema_view.without_ui(cache_timeout=0),
+     name='api-schema-json'),
+    path('api/schema/swagger-ui/', schema_view.with_ui('swagger', cache_timeout=0),
+     name='api-schema-swagger-ui'),
+    path('api/schema/redoc/', schema_view.with_ui('redoc', cache_timeout=0),
+     name='api-schema-redoc'),     
 ]
